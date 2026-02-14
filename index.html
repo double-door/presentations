@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DoubleDoor Vision B — GTM Strategy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #111; color: #fff; overflow: hidden; }
+  
+  .slide { display: none; width: 100vw; height: 100vh; padding: 60px 80px; flex-direction: column; justify-content: center; }
+  .slide.active { display: flex; }
+  
+  /* Slide themes */
+  .slide-cover { background: linear-gradient(135deg, #059669, #047857, #065f46); text-align: center; justify-content: center; align-items: center; }
+  .slide-dark { background: #0f172a; }
+  .slide-white { background: #ffffff; color: #1e293b; }
+  .slide-emerald { background: linear-gradient(135deg, #064e3b, #065f46); }
+  .slide-accent { background: linear-gradient(135deg, #1e293b, #0f172a); }
+  .slide-cta { background: linear-gradient(135deg, #059669, #10b981); text-align: center; align-items: center; }
+  
+  h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
+  h2 { font-size: 2.4rem; font-weight: 700; line-height: 1.2; margin-bottom: 32px; }
+  h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 12px; }
+  p { font-size: 1.25rem; line-height: 1.6; opacity: 0.9; }
+  .subtitle { font-size: 1.5rem; opacity: 0.8; font-weight: 400; }
+  .small { font-size: 1rem; opacity: 0.6; }
+  .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 20px; }
+  .tag-dark { background: rgba(5,150,105,0.15); color: #10b981; }
+  
+  /* Grid layouts */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+  
+  /* Cards */
+  .card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; }
+  .card-white { background: #f8fafc; border: 1px solid #e2e8f0; color: #1e293b; }
+  .card-emerald { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
+  .card h3 { color: #10b981; }
+  .card-white h3 { color: #059669; }
+  
+  /* Stats */
+  .stat { text-align: center; padding: 20px; }
+  .stat-number { font-size: 3.5rem; font-weight: 800; color: #10b981; }
+  .stat-label { font-size: 1rem; opacity: 0.7; margin-top: 4px; }
+  
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 1.05rem; }
+  th { text-align: left; padding: 12px 16px; border-bottom: 2px solid rgba(255,255,255,0.2); color: #10b981; font-weight: 600; }
+  td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .slide-white th { color: #059669; border-bottom-color: #e2e8f0; }
+  .slide-white td { border-bottom-color: #f1f5f9; }
+  tr:last-child td { border-bottom: none; }
+  .highlight-row { background: rgba(16,185,129,0.1); font-weight: 600; }
+  
+  /* Timeline */
+  .timeline { display: flex; gap: 0; align-items: stretch; }
+  .timeline-phase { flex: 1; padding: 24px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .timeline-phase:last-child { border-right: none; }
+  .phase-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #10b981; margin-bottom: 8px; }
+  .phase-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
+  .phase-items { list-style: none; }
+  .phase-items li { font-size: 0.95rem; padding: 4px 0; opacity: 0.8; }
+  .phase-items li::before { content: "→ "; color: #10b981; }
+  
+  /* Quote */
+  .quote { font-size: 1.8rem; font-style: italic; line-height: 1.5; border-left: 4px solid #10b981; padding-left: 32px; margin: 20px 0; }
+  
+  /* Bullet list */
+  .bullets { list-style: none; }
+  .bullets li { font-size: 1.15rem; padding: 10px 0; display: flex; align-items: flex-start; gap: 12px; }
+  .bullets li .icon { font-size: 1.4rem; flex-shrink: 0; }
+  .slide-white .bullets li { color: #334155; }
+  
+  /* Navigation */
+  .nav { position: fixed; bottom: 24px; right: 32px; display: flex; gap: 12px; z-index: 100; }
+  .nav button { background: rgba(255,255,255,0.15); border: none; color: #fff; width: 44px; height: 44px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; transition: background 0.2s; }
+  .nav button:hover { background: rgba(255,255,255,0.25); }
+  .slide-counter { position: fixed; bottom: 30px; left: 32px; font-size: 0.85rem; opacity: 0.4; z-index: 100; color: #fff; }
+  
+  /* Logo */
+  .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.5px; }
+  .logo-mark { color: #10b981; }
+  
+  /* Versus comparison */
+  .vs-container { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; }
+  .vs-divider { font-size: 2rem; font-weight: 800; color: #10b981; }
+  
+  /* Risk table colors */
+  .risk-high { color: #ef4444; font-weight: 600; }
+  .risk-medium { color: #f59e0b; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Cover -->
+<div class="slide slide-cover active" id="slide-1">
+  <div class="tag">Go-To-Market Strategy • February 2026</div>
+  <h1 style="font-size: 4rem;">DoubleDoor<br>Vision B</h1>
+  <p class="subtitle" style="margin-top: 16px; font-size: 1.8rem;">"Sell Your Home, Your Way"</p>
+  <p style="margin-top: 40px; opacity: 0.6;">The FSBO Marketplace That Actually Works</p>
+</div>
+
+<!-- Slide 2: The Problem -->
+<div class="slide slide-dark" id="slide-2">
+  <div class="tag">The Problem</div>
+  <h2>Selling a home costs too much<br>and the tools are built for agents.</h2>
+  <div class="grid-3" style="margin-top: 20px;">
+    <div class="stat">
+      <div class="stat-number">5-6%</div>
+      <div class="stat-label">Traditional agent commission</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">$44K</div>
+      <div class="stat-label">Average commission on a CA home ($800K)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">6%</div>
+      <div class="stat-label">of sellers go FSBO (all-time low)</div>
+    </div>
+  </div>
+  <p style="margin-top: 32px; text-align: center; font-size: 1.1rem;">
+    FSBO sellers save on commission but sell for ~30% less. Not because FSBO is bad —<br>
+    <strong style="color: #10b981;">because they lack access to the professional services that make homes sell.</strong>
+  </p>
+</div>
+
+<!-- Slide 3: The Catalyst -->
+<div class="slide slide-emerald" id="slide-3">
+  <div class="tag">The Catalyst</div>
+  <h2>The NAR Settlement Changed Everything</h2>
+  <div class="grid-2" style="margin-top: 20px;">
+    <div>
+      <h3 style="color: #a7f3d0;">Before (Pre-Aug 2024)</h3>
+      <ul class="bullets">
+        <li><span class="icon">❌</span> Sellers automatically paid both agents' commissions</li>
+        <li><span class="icon">❌</span> Buyer's agent commission baked into MLS listing</li>
+        <li><span class="icon">❌</span> Agents steered clients to higher-commission listings</li>
+        <li><span class="icon">❌</span> The bundled model was legally protected</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color: #a7f3d0;">After (Now)</h3>
+      <ul class="bullets">
+        <li><span class="icon">✅</span> Sellers no longer auto-pay buyer's agent</li>
+        <li><span class="icon">✅</span> Commission transparency is required</li>
+        <li><span class="icon">✅</span> Buyer agreements must be signed upfront</li>
+        <li><span class="icon">✅</span> The door is open for unbundled services</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top: 32px; text-align: center; font-size: 1.2rem;">
+    The biggest disruption in real estate in decades. <strong>The old model is cracking.</strong>
+  </p>
+</div>
+
+<!-- Slide 4: The Insight -->
+<div class="slide slide-dark" id="slide-4">
+  <div class="tag">The Insight</div>
+  <div class="quote">
+    "The problem with FSBO isn't that sellers don't want to do it — it's that the tools are built for agents, not homeowners."
+  </div>
+  <div class="grid-2" style="margin-top: 40px;">
+    <div class="card">
+      <h3>What FSBO platforms do today</h3>
+      <p style="font-size: 1rem;">Get your listing on the MLS. That's it. You're on your own for pricing, photos, staging, legal, inspections, and negotiation.</p>
+    </div>
+    <div class="card card-emerald">
+      <h3>What DoubleDoor does</h3>
+      <p style="font-size: 1rem;">Marketplace of verified, à la carte professionals. Hire a photographer for $200, a pricing consultant for $150, a closing attorney for $500. Save $15K+.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Value Prop -->
+<div class="slide slide-white" id="slide-5">
+  <div class="tag tag-dark">Value Proposition</div>
+  <h2 style="color: #065f46;">Free listing. Verified pros. Keep your equity.</h2>
+  <div class="grid-2" style="margin-top: 20px;">
+    <div>
+      <h3 style="color: #059669; font-size: 1.2rem; margin-bottom: 16px;">For Sellers</h3>
+      <ul class="bullets">
+        <li><span class="icon">💰</span> List your home for free</li>
+        <li><span class="icon">🎯</span> Hire only the pros you need</li>
+        <li><span class="icon">💵</span> Save $30,000-$40,000+ in California</li>
+        <li><span class="icon">🔒</span> Every professional is KYC-verified</li>
+        <li><span class="icon">⭐</span> Reviews and ratings build trust</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color: #059669; font-size: 1.2rem; margin-bottom: 16px;">For Professionals</h3>
+      <ul class="bullets">
+        <li><span class="icon">📱</span> Direct client channel — no middlemen</li>
+        <li><span class="icon">💲</span> Set your own rates and services</li>
+        <li><span class="icon">🏆</span> Build reputation through verified reviews</li>
+        <li><span class="icon">🚫</span> No lead-gen fees or referral cuts</li>
+        <li><span class="icon">✨</span> Verified badge = credibility</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Competition -->
+<div class="slide slide-dark" id="slide-6">
+  <div class="tag">Competitive Landscape</div>
+  <h2>Everyone sells MLS access.<br>Nobody builds the service layer.</h2>
+  <table style="margin-top: 16px;">
+    <tr><th>Platform</th><th>Model</th><th>Price</th><th>Service Marketplace?</th></tr>
+    <tr><td>Houzeo</td><td>Flat-fee MLS</td><td>$399+</td><td>❌ No</td></tr>
+    <tr><td>Beycome</td><td>Flat-fee MLS</td><td>$99-499</td><td>❌ No</td></tr>
+    <tr><td>ListingSpark</td><td>Flat-fee MLS + tools</td><td>$2,995</td><td>❌ No</td></tr>
+    <tr><td>ForSaleByOwner.com</td><td>Listing portal</td><td>Free-$399</td><td>❌ No</td></tr>
+    <tr><td>Zillow FSBO</td><td>Free listing</td><td>Free</td><td>❌ No</td></tr>
+    <tr class="highlight-row"><td>DoubleDoor</td><td>Service marketplace + listing</td><td>Free + per service</td><td style="color: #10b981;">✅ Yes — the point</td></tr>
+  </table>
+</div>
+
+<!-- Slide 7: The Math -->
+<div class="slide slide-emerald" id="slide-7">
+  <div class="tag">The Math</div>
+  <h2>An $800,000 California Home Sale</h2>
+  <div class="vs-container" style="margin-top: 24px;">
+    <div class="card" style="background: rgba(0,0,0,0.2); text-align: center;">
+      <h3 style="color: #fca5a5;">Traditional Agent</h3>
+      <div style="font-size: 1rem; margin: 16px 0; opacity: 0.8;">5.5% commission</div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: #fca5a5;">-$44,000</div>
+      <div style="font-size: 0.9rem; margin-top: 8px; opacity: 0.7;">Seller takes home: $756,000</div>
+    </div>
+    <div class="vs-divider">VS</div>
+    <div class="card card-emerald" style="text-align: center;">
+      <h3>DoubleDoor À La Carte</h3>
+      <div style="font-size: 0.9rem; margin: 12px 0; opacity: 0.8;">
+        Photographer: $400<br>
+        Pricing consultant: $300<br>
+        Escrow &amp; title: $2,000<br>
+        Attorney: $1,000<br>
+        Home inspector: $500
+      </div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: #10b981;">-$4,200</div>
+      <div style="font-size: 0.9rem; margin-top: 8px; opacity: 0.7;">Seller takes home: $795,800</div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 32px;">
+    <div style="font-size: 2.5rem; font-weight: 800;">Savings: <span style="color: #a7f3d0;">$39,800</span></div>
+  </div>
+</div>
+
+<!-- Slide 8: Target Customer -->
+<div class="slide slide-dark" id="slide-8">
+  <div class="tag">Target Customer</div>
+  <h2>Who We're Building For</h2>
+  <div class="grid-2" style="margin-top: 16px;">
+    <div class="card">
+      <h3>Primary: The "Capable Seller"</h3>
+      <ul class="bullets">
+        <li><span class="icon">🏠</span> Has sold a home before (or is confident)</li>
+        <li><span class="icon">💻</span> Tech-savvy, manages things online</li>
+        <li><span class="icon">💰</span> Motivated by savings ($350K-$750K home)</li>
+        <li><span class="icon">🤝</span> Comfortable negotiating, wants pros for specifics</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Secondary: "Already Has a Buyer"</h3>
+      <ul class="bullets">
+        <li><span class="icon">👥</span> 50%+ of FSBO sellers already know the buyer</li>
+        <li><span class="icon">⚖️</span> Needs legal/closing support, not buyer acquisition</li>
+        <li><span class="icon">⚡</span> Lowest friction, highest conversion</li>
+        <li><span class="icon">📋</span> Just needs the transaction infrastructure</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 9: Both Sides -->
+<div class="slide slide-emerald" id="slide-9">
+  <div class="tag">Not Just Sellers</div>
+  <h2>A Platform for Both Sides of the Deal</h2>
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <h3 style="color: #a7f3d0;">Sellers Use DoubleDoor To...</h3>
+      <ul class="bullets">
+        <li><span class="icon">📸</span> Hire a photographer for listing photos</li>
+        <li><span class="icon">💬</span> Get pricing advice from a consultant</li>
+        <li><span class="icon">🏠</span> Stage their home for showings</li>
+        <li><span class="icon">📜</span> Open escrow with a verified officer</li>
+        <li><span class="icon">⚖️</span> Get legal review on contracts</li>
+      </ul>
+    </div>
+    <div class="card card-emerald">
+      <h3>Buyers Use DoubleDoor To...</h3>
+      <ul class="bullets">
+        <li><span class="icon">📊</span> Order an independent appraisal <em>before</em> making an offer</li>
+        <li><span class="icon">🔍</span> Hire their own inspector (no agent conflicts)</li>
+        <li><span class="icon">🏦</span> Connect with mortgage bankers directly</li>
+        <li><span class="icon">⚖️</span> Get independent legal counsel</li>
+        <li><span class="icon">🏡</span> Hire an agent for representation only</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top: 24px; text-align: center; font-size: 1.2rem;">
+    <strong>Key insight:</strong> Buyers ordering their own appraisals avoids professional conflicts.<br>
+    They know exactly what to offer — based on <em>their</em> appraiser, not the seller's.
+  </p>
+</div>
+
+<!-- Slide 10: GTM Phases -->
+<div class="slide slide-white" id="slide-10">
+  <div class="tag tag-dark">Go-To-Market Phases</div>
+  <h2 style="color: #065f46;">Four Phases to Market</h2>
+  <div class="timeline" style="margin-top: 24px;">
+    <div class="timeline-phase" style="background: #f0fdf4; border-radius: 12px 0 0 12px; border: 1px solid #bbf7d0;">
+      <div class="phase-label">Phase 0 • Now</div>
+      <div class="phase-title" style="color: #065f46;">Foundation</div>
+      <ul class="phase-items" style="color: #334155;">
+        <li>Fix & deploy prototype</li>
+        <li>Seller listing flow</li>
+        <li>Professional onboarding</li>
+        <li>Choose target metro</li>
+      </ul>
+    </div>
+    <div class="timeline-phase" style="background: #ecfdf5; border: 1px solid #bbf7d0;">
+      <div class="phase-label">Phase 1 • Month 1-2</div>
+      <div class="phase-title" style="color: #065f46;">Get the Pros</div>
+      <ul class="phase-items" style="color: #334155;">
+        <li>LinkedIn/IG outreach</li>
+        <li>30 pros per metro</li>
+        <li>Free featured profiles</li>
+        <li>3+ categories covered</li>
+      </ul>
+    </div>
+    <div class="timeline-phase" style="background: #f0fdf4; border: 1px solid #bbf7d0;">
+      <div class="phase-label">Phase 2 • Month 2-4</div>
+      <div class="phase-title" style="color: #065f46;">Get Sellers</div>
+      <ul class="phase-items" style="color: #334155;">
+        <li>FSBO guides (SEO)</li>
+        <li>Savings calculator</li>
+        <li>Google/Facebook ads</li>
+        <li>Reddit/community</li>
+      </ul>
+    </div>
+    <div class="timeline-phase" style="background: #ecfdf5; border-radius: 0 12px 12px 0; border: 1px solid #bbf7d0;">
+      <div class="phase-label">Phase 3 • Month 4-8</div>
+      <div class="phase-title" style="color: #065f46;">Flywheel</div>
+      <ul class="phase-items" style="color: #334155;">
+        <li>Case studies → more sellers</li>
+        <li>Reviews → quality signal</li>
+        <li>More sellers → more pros</li>
+        <li>Expand to new metros</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10: Supply Strategy -->
+<div class="slide slide-dark" id="slide-11">
+  <div class="tag">Phase 1: Supply Side</div>
+  <h2>Solve the Cold Start:<br>Professionals First</h2>
+  <div class="grid-3" style="margin-top: 20px;">
+    <div class="card">
+      <h3>🏡 Agents</h3>
+      <p style="font-size: 0.95rem;">Limited-scope services. Not all sellers want full DIY — some want an agent for specific tasks only.</p>
+    </div>
+    <div class="card">
+      <h3>📜 Escrow &amp; Title</h3>
+      <p style="font-size: 0.95rem;">Essential for CA transactions. Escrow officers and title companies are the backbone of closings.</p>
+    </div>
+    <div class="card">
+      <h3>🏦 Mortgage</h3>
+      <p style="font-size: 0.95rem;">Mortgage bankers/brokers. Buyers need financing — connect them directly.</p>
+    </div>
+  </div>
+  <div class="grid-3" style="margin-top: 16px;">
+    <div class="card">
+      <h3>📸 Photographers</h3>
+      <p style="font-size: 0.95rem;">Easy to find (Instagram/Google). They already want direct clients beyond agent referrals.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Appraisers</h3>
+      <p style="font-size: 0.95rem;">Key for both sides. Buyers can order independent appraisals before making offers — avoid conflicts.</p>
+    </div>
+    <div class="card">
+      <h3>🔍 Inspectors + ⚖️ Attorneys</h3>
+      <p style="font-size: 0.95rem;">Pre-listing inspections for sellers. Legal review for both parties. Trust infrastructure.</p>
+    </div>
+  </div>
+  <div style="margin-top: 32px; padding: 20px; background: rgba(16,185,129,0.1); border-radius: 12px; border: 1px solid rgba(16,185,129,0.2);">
+    <p style="font-size: 1.1rem; text-align: center;">
+      <strong>The Hook:</strong> "Get direct clients. Set your own rates. No referral fees. Free verified profile."<br>
+      <span style="opacity: 0.7;">Target: 30+ professionals in 3+ categories within 60 days</span>
+    </p>
+  </div>
+</div>
+
+<!-- Slide 11: Cold Start Playbook -->
+<div class="slide slide-emerald" id="slide-12">
+  <div class="tag">The Cold Start Problem</div>
+  <h2>6 Tactics to Break the Chicken-and-Egg Cycle</h2>
+  <div class="grid-3" style="margin-top: 16px;">
+    <div class="card">
+      <h3>🛠 1. SaaS-First</h3>
+      <p style="font-size: 0.9rem;">Build a free profile + booking tool pros use <em>independently</em> of sellers. They get value day one.</p>
+      <p class="small" style="margin-top:8px;">Precedent: OpenTable, StyleSeat, HoneyBook</p>
+    </div>
+    <div class="card">
+      <h3>📂 2. Seed the Directory</h3>
+      <p style="font-size: 0.9rem;">Aggregate from state licensing boards, Yelp, Google Business. Create "unclaimed" profiles pros are motivated to claim.</p>
+      <p class="small" style="margin-top:8px;">Precedent: Yelp, Indeed, Zillow</p>
+    </div>
+    <div class="card">
+      <h3>🤝 3. Founder Sales</h3>
+      <p style="font-size: 0.9rem;">First 30 pros come from personal outreach, not landing pages. Charter member status + peer referrals.</p>
+      <p class="small" style="margin-top:8px;">Precedent: Every marketplace ever</p>
+    </div>
+    <div class="card">
+      <h3>🧮 4. Single-Player Mode</h3>
+      <p style="font-size: 0.9rem;">Savings calculator, FSBO guide, listing tools — valuable <em>before</em> a single pro is booked. The tool drives demand.</p>
+      <p class="small" style="margin-top:8px;">Precedent: Zillow Zestimate, Robinhood</p>
+    </div>
+    <div class="card">
+      <h3>🎯 5. Niche Ruthlessly</h3>
+      <p style="font-size: 0.9rem;">One metro. "Already has a buyer" sellers. Three pro categories (attorneys, inspectors, photographers). Create real liquidity.</p>
+      <p class="small" style="margin-top:8px;">Precedent: Uber SF, eBay Beanie Babies</p>
+    </div>
+    <div class="card">
+      <h3>💰 6. Subsidize Early</h3>
+      <p style="font-size: 0.9rem;">Cover first 50 consultations (~$5K). Creates transactions → reviews → social proof → organic growth.</p>
+      <p class="small" style="margin-top:8px;">Precedent: Uber driver subsidies, ClassPass</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 12: Demand Strategy -->
+<div class="slide slide-accent" id="slide-13">
+  <div class="tag">Phase 2: Demand Side</div>
+  <h2>Content + Community + Paid</h2>
+  <div class="grid-3" style="margin-top: 20px;">
+    <div class="card">
+      <h3>📝 Content (SEO)</h3>
+      <ul class="bullets" style="margin-top: 8px;">
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> "Complete FSBO Guide 2026"</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> "FSBO Guide for [City]"</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> "NAR Settlement Explained"</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> Commission calculator</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>👥 Community</h3>
+      <ul class="bullets" style="margin-top: 8px;">
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> r/RealEstate, r/FSBO</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> Facebook seller groups</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> Nextdoor local</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> Quora answers</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>💳 Paid</h3>
+      <ul class="bullets" style="margin-top: 8px;">
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> Google: "sell house no agent"</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> FB/IG: calculator lead magnet</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> Retargeting visitors</li>
+        <li style="font-size: 0.95rem;"><span class="icon">→</span> ~$2-3.5K/mo budget</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 13: Revenue -->
+<div class="slide slide-white" id="slide-14">
+  <div class="tag tag-dark">Revenue Model</div>
+  <h2 style="color: #065f46;">Free First. Monetize at Scale.</h2>
+  <div class="grid-3" style="margin-top: 20px;">
+    <div class="card card-white" style="border-top: 4px solid #10b981;">
+      <div style="font-size: 0.8rem; text-transform: uppercase; color: #10b981; letter-spacing: 1px; margin-bottom: 8px;">Phase 0-1</div>
+      <h3 style="font-size: 1.5rem;">Free</h3>
+      <p style="font-size: 0.95rem; color: #64748b;">Everything free. Build the marketplace. Get supply and demand.</p>
+    </div>
+    <div class="card card-white" style="border-top: 4px solid #059669;">
+      <div style="font-size: 0.8rem; text-transform: uppercase; color: #059669; letter-spacing: 1px; margin-bottom: 8px;">Phase 2</div>
+      <h3 style="font-size: 1.5rem;">10% Booking Fee</h3>
+      <p style="font-size: 0.95rem; color: #64748b;">Transaction fee on professional consultations. Stripe escrow until completed.</p>
+    </div>
+    <div class="card card-white" style="border-top: 4px solid #047857;">
+      <div style="font-size: 0.8rem; text-transform: uppercase; color: #047857; letter-spacing: 1px; margin-bottom: 8px;">Phase 3</div>
+      <h3 style="font-size: 1.5rem;">Premium Tiers</h3>
+      <p style="font-size: 0.95rem; color: #64748b;">Featured listings ($49/mo), Pro profiles ($29/mo), team management ($99/mo).</p>
+    </div>
+  </div>
+  <p style="margin-top: 24px; text-align: center; color: #64748b; font-size: 1rem;">
+    💡 Resist the urge to charge early. Marketplaces die when they monetize before achieving liquidity.
+  </p>
+</div>
+
+<!-- Slide 14: Metrics -->
+<div class="slide slide-dark" id="slide-15">
+  <div class="tag">Key Metrics</div>
+  <h2>What Success Looks Like</h2>
+  <table style="margin-top: 24px;">
+    <tr><th>Metric</th><th>Phase 0</th><th>Phase 1</th><th>Phase 2</th><th>Phase 3</th></tr>
+    <tr><td>Professionals onboarded</td><td>5 (seed)</td><td>30+</td><td>50+</td><td>100+</td></tr>
+    <tr><td>Active listings</td><td>3 (seed)</td><td>10</td><td>100</td><td>500+</td></tr>
+    <tr><td>Consultations booked</td><td>0</td><td>5</td><td>50</td><td>200+/mo</td></tr>
+    <tr><td>Metros live</td><td>1</td><td>1</td><td>2-3</td><td>5+</td></tr>
+    <tr><td>Revenue</td><td>$0</td><td>$0</td><td>~$2K/mo</td><td>$10K+/mo</td></tr>
+  </table>
+</div>
+
+<!-- Slide 15: Risks -->
+<div class="slide slide-accent" id="slide-16">
+  <div class="tag">Risks & Mitigations</div>
+  <h2>Eyes Open</h2>
+  <table style="margin-top: 24px;">
+    <tr><th>Risk</th><th>Level</th><th>Mitigation</th></tr>
+    <tr><td>Chicken-and-egg (no pros ↔ no sellers)</td><td class="risk-high">High</td><td>Seed supply first; free profiles for early pros</td></tr>
+    <tr><td>FSBO stigma ("homes sell for less")</td><td class="risk-medium">Medium</td><td>Education content; savings calculator; success stories</td></tr>
+    <tr><td>Zillow/Redfin copies the model</td><td class="risk-medium">Medium</td><td>Move fast; build community moat; niche down</td></tr>
+    <tr><td>Legal/regulatory barriers by state</td><td class="risk-medium">Medium</td><td>Start in FSBO-friendly states; attorney partnerships</td></tr>
+    <tr><td>Low conversion (browsers don't list)</td><td class="risk-medium">Medium</td><td>Reduce friction; "list in 5 min" UX; email nurture</td></tr>
+  </table>
+</div>
+
+<!-- Slide 16: Metro Selection -->
+<div class="slide slide-white" id="slide-17">
+  <div class="tag tag-dark">Launch Market</div>
+  <h2 style="color: #065f46;">California First</h2>
+  <p style="color: #64748b; margin-bottom: 24px;">Highest home values = biggest savings story. Start here, expand later.</p>
+  <table>
+    <tr><th>Metro</th><th>Median Price</th><th>Why</th><th>Notes</th></tr>
+    <tr style="background: #f0fdf4;"><td>🌟 Los Angeles, CA</td><td>~$950K</td><td>Massive market, huge savings potential, diverse</td><td>Primary target</td></tr>
+    <tr style="background: #f0fdf4;"><td>🌟 SF Bay Area, CA</td><td>~$1.2M</td><td>Highest savings ($60K+), tech-savvy sellers</td><td>Primary target</td></tr>
+    <tr style="background: #f0fdf4;"><td>San Diego, CA</td><td>~$850K</td><td>Strong market, military/relocations</td><td>Secondary</td></tr>
+    <tr style="background: #f0fdf4;"><td>Sacramento, CA</td><td>~$550K</td><td>Growing, Bay Area spillover</td><td>Secondary</td></tr>
+  </table>
+  <table style="margin-top: 24px;">
+    <tr><th colspan="4" style="color: #64748b; font-size: 0.9rem;">Future Expansion Markets</th></tr>
+    <tr><td>Austin, TX</td><td>~$450K</td><td>Denver, CO</td><td>~$550K</td></tr>
+    <tr><td>Phoenix, AZ</td><td>~$420K</td><td>Raleigh, NC</td><td>~$400K</td></tr>
+  </table>
+</div>
+
+<!-- Slide 17: Next Steps -->
+<div class="slide slide-cta" id="slide-18">
+  <div class="tag" style="background: rgba(255,255,255,0.2);">What's Next</div>
+  <h1 style="font-size: 3rem;">Phase 0 Starts Now</h1>
+  <div style="margin-top: 32px; text-align: left; max-width: 600px;">
+    <ul class="bullets" style="font-size: 1.2rem;">
+      <li><span class="icon">1️⃣</span> Fix build & deploy prototype</li>
+      <li><span class="icon">2️⃣</span> Build seller listing creation flow</li>
+      <li><span class="icon">3️⃣</span> Build professional onboarding</li>
+      <li><span class="icon">4️⃣</span> Choose target metro</li>
+      <li><span class="icon">5️⃣</span> Start professional outreach</li>
+    </ul>
+  </div>
+  <p style="margin-top: 40px; font-size: 1.3rem; opacity: 0.9;">
+    Let's discuss. 🐱
+  </p>
+  <p class="small" style="margin-top: 24px;">DoubleDoor Vision B • Method & Apparatus • February 2026</p>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button onclick="prevSlide()">←</button>
+  <button onclick="nextSlide()">→</button>
+</div>
+<div class="slide-counter"><span id="current">1</span> / <span id="total">18</span></div>
+
+<script>
+let current = 1;
+const total = 18;
+
+function showSlide(n) {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  document.getElementById('slide-' + n).classList.add('active');
+  document.getElementById('current').textContent = n;
+  current = n;
+}
+
+function nextSlide() { if (current < total) showSlide(current + 1); }
+function prevSlide() { if (current > 1) showSlide(current - 1); }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+});
+
+// Touch/swipe support
+let touchStartX = 0;
+document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+});
+</script>
+</body>
+</html>
