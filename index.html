@@ -40,7 +40,6 @@ td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .slide-white th{color:#059669;border-bottom-color:#e2e8f0}
 .slide-white td{border-bottom-color:#f1f5f9}
 tr:last-child td{border-bottom:none}
-.highlight-row{background:rgba(16,185,129,0.1);font-weight:600}
 .timeline{display:flex;gap:0;align-items:stretch}
 .timeline-phase{flex:1;padding:24px;border-right:1px solid rgba(255,255,255,0.1)}
 .timeline-phase:last-child{border-right:none}
@@ -48,7 +47,7 @@ tr:last-child td{border-bottom:none}
 .phase-title{font-size:1.3rem;font-weight:700;margin-bottom:12px}
 .phase-items{list-style:none}
 .phase-items li{font-size:0.95rem;padding:4px 0;opacity:0.8}
-.phase-items li::before{content:"→ ";color:#10b981}
+.phase-items li::before{content:"\\2192 ";color:#10b981}
 .quote{font-size:1.8rem;font-style:italic;line-height:1.5;border-left:4px solid #10b981;padding-left:32px;margin:20px 0}
 .bullets{list-style:none}
 .bullets li{font-size:1.15rem;padding:10px 0;display:flex;align-items:flex-start;gap:12px}
@@ -59,9 +58,6 @@ tr:last-child td{border-bottom:none}
 .nav button:hover{background:rgba(255,255,255,0.25)}
 .slide-counter{position:fixed;bottom:30px;left:32px;font-size:0.85rem;opacity:0.4;z-index:100;color:#fff}
 .vs-container{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
-.risk-high{color:#ef4444;font-weight:600}
-.risk-medium{color:#f59e0b;font-weight:600}
-.risk-low{color:#10b981;font-weight:600}
 .flow{display:flex;align-items:stretch;gap:0;margin-top:20px}
 .flow-step{flex:1;text-align:center;padding:28px 16px;background:rgba(255,255,255,0.06);border-radius:16px}
 .flow-step h3{color:#10b981;font-size:1.1rem}
@@ -69,6 +65,16 @@ tr:last-child td{border-bottom:none}
 .flow-arrow{font-size:2rem;color:#10b981;padding:0 8px;flex-shrink:0;display:flex;align-items:center}
 .flow-step .step-number{font-size:2rem;font-weight:800;color:#10b981;margin-bottom:8px}
 .deck-footer{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);font-size:0.7rem;opacity:0.25;z-index:100;color:#fff;white-space:nowrap}
+.matrix-table{width:100%;border-collapse:collapse;font-size:0.95rem;margin-top:16px}
+.matrix-table th{padding:10px 14px;text-align:center;font-size:0.85rem;font-weight:700;border-bottom:2px solid #e2e8f0;color:#334155}
+.matrix-table th:first-child{text-align:left;width:32%}
+.matrix-table th.dd-col{background:#dc2626;color:#fff}
+.matrix-table td{padding:10px 14px;text-align:center;border-bottom:1px solid #f1f5f9;color:#475569}
+.matrix-table td:first-child{text-align:left;font-weight:500;color:#1e293b}
+.matrix-table td.dd-col{background:rgba(220,38,38,0.05)}
+.matrix-table .check{color:#10b981;font-size:1.2rem}
+.matrix-table .check-dd{color:#dc2626;font-size:1.2rem;font-weight:bold}
+.matrix-table tr:last-child td{border-bottom:none}
 </style>
 </head>
 <body>
@@ -87,32 +93,14 @@ tr:last-child td{border-bottom:none}
   <div class="tag">The Problem</div>
   <h2>Cross-border real estate investment<br>is broken by distrust.</h2>
   <div class="grid-3" style="margin-top:16px">
-    <div class="card">
-      <h3>🔒 Fraud &amp; Scams</h3>
-      <p style="font-size:0.95rem">Wire fraud, fake listings, impersonation of licensed professionals. The FBI reports $446M+ in RE wire fraud losses annually. Cross-border buyers are prime targets.</p>
-    </div>
-    <div class="card">
-      <h3>🌐 Opaque Markets</h3>
-      <p style="font-size:0.95rem">Foreign buyers can't verify licenses, read contracts in another language, or navigate unfamiliar title and escrow systems. Every step is a leap of faith.</p>
-    </div>
-    <div class="card">
-      <h3>⚖️ Legal Complexity</h3>
-      <p style="font-size:0.95rem">Property law varies drastically between countries. Tax implications, ownership structures (fideicomiso, LLC), and repatriation rules create a compliance minefield.</p>
-    </div>
+    <div class="card"><h3>&#x1F512; Fraud &amp; Scams</h3><p style="font-size:0.95rem">Wire fraud, fake listings, impersonation of licensed professionals. The FBI reports $446M+ in RE wire fraud losses annually. Cross-border buyers are prime targets.</p></div>
+    <div class="card"><h3>&#x1F310; Opaque Markets</h3><p style="font-size:0.95rem">Foreign buyers can&rsquo;t verify licenses, read contracts in another language, or navigate unfamiliar title and escrow systems. Every step is a leap of faith.</p></div>
+    <div class="card"><h3>&#x2696;&#xFE0F; Legal Complexity</h3><p style="font-size:0.95rem">Property law varies drastically between countries. Tax implications, ownership structures (fideicomiso, LLC), and repatriation rules create a compliance minefield.</p></div>
   </div>
   <div class="grid-3" style="margin-top:16px">
-    <div class="card">
-      <h3>🗣️ Language Barriers</h3>
-      <p style="font-size:0.95rem">Contracts, disclosures, and negotiations in a foreign language. Miscommunication kills deals &mdash; or creates binding obligations buyers don't understand.</p>
-    </div>
-    <div class="card">
-      <h3>🤷 No Trusted Intermediaries</h3>
-      <p style="font-size:0.95rem">No way to verify who you're working with across borders. Is the agent licensed? Is the escrow company real? Foreign buyers have zero reference points.</p>
-    </div>
-    <div class="card">
-      <h3>💸 Capital &amp; Compliance</h3>
-      <p style="font-size:0.95rem">Moving money across borders triggers AML requirements. Sellers worry about fund legitimacy. Buyers struggle with proof-of-funds and capital controls.</p>
-    </div>
+    <div class="card"><h3>&#x1F5E3;&#xFE0F; Language Barriers</h3><p style="font-size:0.95rem">Contracts, disclosures, and negotiations in a foreign language. Miscommunication kills deals &mdash; or creates binding obligations buyers don&rsquo;t understand.</p></div>
+    <div class="card"><h3>&#x1F937; No Trusted Intermediaries</h3><p style="font-size:0.95rem">No way to verify who you&rsquo;re working with across borders. Is the agent licensed? Is the escrow company real? Foreign buyers have zero reference points.</p></div>
+    <div class="card"><h3>&#x1F4B8; Capital &amp; Compliance</h3><p style="font-size:0.95rem">Moving money across borders triggers AML requirements. Sellers worry about fund legitimacy. Buyers struggle with proof-of-funds and capital controls.</p></div>
   </div>
 </div>
 
@@ -121,31 +109,19 @@ tr:last-child td{border-bottom:none}
   <div class="tag">Market Opportunity</div>
   <h2>Cross-border residential real estate<br>is massive &mdash; and growing.</h2>
   <div class="grid-4" style="margin-top:16px">
-    <div class="stat">
-      <div class="stat-number">$42B</div>
-      <div class="stat-label">Foreign buyer purchases<br>in US residential RE (2024)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">$54.4B</div>
-      <div class="stat-label">Foreign buyer purchases<br>in US residential RE (2023)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">54,300</div>
-      <div class="stat-label">Existing homes purchased<br>by foreign buyers (2024)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">$780K</div>
-      <div class="stat-label">Median purchase price<br>foreign buyers (vs $420K overall)</div>
-    </div>
+    <div class="stat"><div class="stat-number">$42B</div><div class="stat-label">Foreign buyer purchases<br>in US residential RE (2024)</div></div>
+    <div class="stat"><div class="stat-number">$54.4B</div><div class="stat-label">Foreign buyer purchases<br>in US residential RE (2023)</div></div>
+    <div class="stat"><div class="stat-number">54,300</div><div class="stat-label">Existing homes purchased<br>by foreign buyers (2024)</div></div>
+    <div class="stat"><div class="stat-number">$780K</div><div class="stat-label">Median purchase price<br>foreign buyers (vs $420K overall)</div></div>
   </div>
   <div class="grid-2" style="margin-top:32px">
     <div class="card" style="background:rgba(255,255,255,0.08)">
-      <h3 style="color:#a7f3d0">🇺🇸 Inbound: Foreign → US</h3>
+      <h3 style="color:#a7f3d0">&#x1F1FA;&#x1F1F8; Inbound: Foreign &#x2192; US</h3>
       <p style="font-size:0.95rem">Top origins: China ($7.5B, $1.2M median), Canada, Mexico, India, Colombia. California &amp; Florida dominate destinations. Chinese buyers: 15% of all international transactions.</p>
       <p class="small" style="margin-top:8px">Source: NAR 2024 International Transactions Report</p>
     </div>
     <div class="card card-emerald">
-      <h3>🌏 Outbound: US → International</h3>
+      <h3>&#x1F30F; Outbound: US &#x2192; International</h3>
       <p style="font-size:0.95rem">Americans increasingly purchasing in Mexico (Pacific coast, Riviera Maya), Costa Rica, Portugal, Colombia. Estimated $10B+ annually, growing 15-20% YoY. Remote work accelerating the trend.</p>
       <p class="small" style="margin-top:8px">Sources: AMPI, ICR, industry estimates</p>
     </div>
@@ -155,9 +131,7 @@ tr:last-child td{border-bottom:none}
 <!-- Slide 4: The Insight -->
 <div class="slide slide-dark" id="slide-4">
   <div class="tag">The Insight</div>
-  <div class="quote" style="margin-top:40px">
-    "The problem is finding property listings that are updated and genuine, and finding trustworthy people on the other side."
-  </div>
+  <div class="quote" style="margin-top:40px">&ldquo;The problem is finding property listings that are updated and genuine, and finding trustworthy people on the other side.&rdquo;</div>
   <div class="grid-2" style="margin-top:48px">
     <div class="card">
       <h3>What exists today</h3>
@@ -165,226 +139,204 @@ tr:last-child td{border-bottom:none}
       <p style="font-size:1.1rem;margin-top:16px"><strong>Listings are easy. Trust is hard.</strong></p>
     </div>
     <div class="card card-emerald">
-      <h3>What's missing</h3>
+      <h3>What&rsquo;s missing</h3>
       <p style="font-size:1rem">A <strong>trust layer</strong> &mdash; verified professionals on one side, pre-qualified buyers on the other, with DoubleDoor as the infrastructure that makes cross-border transactions safe.</p>
       <p style="font-size:1rem;margin-top:12px"><strong>Not another listing site. A trust marketplace.</strong></p>
     </div>
   </div>
 </div>
 
-<!-- Slide 5: What DoubleDoor Does -->
+<!-- Slide 5: Two-Sided Vetting (Amy's rewrite) -->
 <div class="slide slide-white" id="slide-5">
   <div class="tag tag-dark">What DoubleDoor Does</div>
-  <h2 style="color:#065f46">A vertical marketplace for cross-border<br>real estate trust.</h2>
+  <h2 style="color:#065f46">Two-Sided Vetting</h2>
   <div class="grid-3" style="margin-top:16px">
     <div class="card card-white" style="border-top:4px solid #10b981">
-      <h3>🔍 Two-Sided Vetting</h3>
-      <p style="font-size:0.95rem;color:#475569">Every professional is license-verified. Every buyer is KYC/AML-cleared with proof of funds. Both sides know exactly who they're dealing with.</p>
+      <h3>&#x1F50D; Verified Professionals</h3>
+      <p style="font-size:0.95rem;color:#475569">Every professional is license-verified. Credentials checked, background confirmed, standing validated.</p>
     </div>
     <div class="card card-white" style="border-top:4px solid #059669">
-      <h3>🌐 Bidirectional Corridors</h3>
-      <p style="font-size:0.95rem;color:#475569">Foreign buyers investing in US properties <em>and</em> US buyers investing internationally &mdash; Mexico, Costa Rica, and beyond. Same trust infrastructure, both directions.</p>
+      <h3>&#x2705; Pre-Qualified Buyers</h3>
+      <p style="font-size:0.95rem;color:#475569">Every buyer is pre-qualified with proof of funds. Real investors, ready to transact.</p>
     </div>
     <div class="card card-white" style="border-top:4px solid #047857">
-      <h3>🗣️ Multilingual by Design</h3>
-      <p style="font-size:0.95rem;color:#475569">English, Spanish, Simplified Chinese, Traditional Chinese. Not translated after the fact &mdash; built for these language corridors from day one.</p>
+      <h3>&#x1F91D; Mutual Trust</h3>
+      <p style="font-size:0.95rem;color:#475569">Both sides know exactly who they&rsquo;re dealing with. That&rsquo;s the DoubleDoor difference.</p>
     </div>
   </div>
   <div style="margin-top:28px;padding:20px;background:#f0fdf4;border-radius:12px;border:1px solid #bbf7d0;text-align:center">
-    <p style="font-size:1.1rem;color:#065f46;margin:0">
-      <strong>What DoubleDoor is NOT:</strong> We don't broker deals, hold inventory, employ agents, or buy/sell properties.<br>
-      We are <em>trust infrastructure</em> &mdash; the verified marketplace where cross-border transactions happen safely.
-    </p>
+    <p style="font-size:1.15rem;color:#065f46;margin:0">Every professional is license-verified. Every buyer is pre-qualified with proof of funds.<br><strong>Both sides know exactly who they&rsquo;re dealing with.</strong></p>
+  </div>
+  <div style="margin-top:16px;padding:16px;background:#fff;border-radius:12px;border:1px solid #e2e8f0;text-align:center">
+    <p style="font-size:1rem;color:#065f46;margin:0"><strong>What DoubleDoor is NOT:</strong> We don&rsquo;t broker deals, hold inventory, employ agents, or buy/sell properties.<br>We are <em>trust infrastructure</em> &mdash; the verified marketplace where cross-border transactions happen safely.</p>
   </div>
 </div>
 
-<!-- Slide 6: How It Works -->
+<!-- Slide 6: 4 Step by Step Offering Process (Amy's rewrite) -->
 <div class="slide slide-dark" id="slide-6">
   <div class="tag">How It Works</div>
-  <h2>Four steps to a trusted cross-border transaction.</h2>
+  <h2>4 Step by Step Offering Process</h2>
+  <p style="margin-bottom:8px;opacity:0.85">Foreign buyers are pre-qualified. They enter as vetted, serious investors.</p>
   <div class="flow">
-    <div class="flow-step">
-      <div class="step-number">1</div>
-      <h3>Professionals Verify</h3>
-      <p>Agents, escrow officers, attorneys, appraisers submit credentials. DoubleDoor validates licenses, background, and standing.</p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="step-number">2</div>
-      <h3>Buyers Pre-Qualify</h3>
-      <p>Foreign buyers complete KYC/AML verification and proof of funds. They enter as vetted, serious investors.</p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="step-number">3</div>
-      <h3>Marketplace Connects</h3>
-      <p>Verified professionals list services &amp; properties. Pre-qualified buyers browse and engage &mdash; in their language.</p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="step-number">4</div>
-      <h3>Secure Transaction</h3>
-      <p>Both sides verified. Structured offers, verified escrow, clear title &mdash; trust at every step of closing.</p>
-    </div>
+    <div class="flow-step"><div class="step-number">1</div><h3>Professionals Verify</h3><p>Agents, escrow officers, attorneys, appraisers submit credentials. DoubleDoor validates licenses, background, and standing.</p></div>
+    <div class="flow-arrow">&#x2192;</div>
+    <div class="flow-step"><div class="step-number">2</div><h3>Buyers Pre-Qualify</h3><p>Foreign buyers complete verification and proof of funds. They enter as vetted, serious investors.</p></div>
+    <div class="flow-arrow">&#x2192;</div>
+    <div class="flow-step"><div class="step-number">3</div><h3>Marketplace Connects</h3><p>Verified professionals list services &amp; properties. Pre-qualified buyers browse and engage &mdash; in their language.</p></div>
+    <div class="flow-arrow">&#x2192;</div>
+    <div class="flow-step"><div class="step-number">4</div><h3>Secure Transaction</h3><p>Both sides verified. Structured offers, verified escrow, clear title &mdash; trust at every step of closing.</p></div>
   </div>
-  <p style="margin-top:32px;text-align:center;font-size:1.1rem;opacity:0.7">
-    Every participant is verified before they transact. That's the DoubleDoor difference.
-  </p>
+  <p style="margin-top:32px;text-align:center;font-size:1.1rem;opacity:0.7">Every participant is verified before they transact. That&rsquo;s the DoubleDoor difference.</p>
 </div>
 
-<!-- Slide 7: For Professionals -->
+<!-- Slide 7: Pre-Qualified Foreign Buyers (combined old 7+8) -->
 <div class="slide slide-emerald" id="slide-7">
-  <div class="tag">For Professionals</div>
-  <h2>A global client pipeline,<br>delivered to your door.</h2>
-  <div class="grid-2" style="margin-top:16px">
+  <div class="tag">For Professionals &amp; Buyers</div>
+  <h2>Pre-Qualified Foreign Buyers</h2>
+  <p style="font-size:1.3rem;margin-bottom:24px;opacity:0.95">Every buyer has been pre-qualified with proof of funds &mdash; real investors ready to transact.</p>
+  <div class="grid-2" style="margin-top:8px">
     <div>
+      <h3 style="color:#a7f3d0;font-size:1.2rem;margin-bottom:16px">For Professionals</h3>
       <ul class="bullets">
-        <li><span class="icon">🌏</span><div><strong>Pre-Qualified Foreign Buyers</strong><br><span style="font-size:0.95rem;opacity:0.8">Every buyer has passed KYC/AML and proof of funds. No tire-kickers, no fraud risk &mdash; real investors ready to transact.</span></div></li>
-        <li><span class="icon">✅</span><div><strong>Verified Badge = Credibility</strong><br><span style="font-size:0.95rem;opacity:0.8">License verification, background checks, cross-border reviews. Your badge tells foreign buyers you're the real thing.</span></div></li>
-        <li><span class="icon">💲</span><div><strong>Simple Subscription</strong><br><span style="font-size:0.95rem;opacity:0.8">No per-lead fees, no commissions. Predictable, transparent costs.</span></div></li>
+        <li><span class="icon">&#x1F30F;</span><div><strong>Pre-Qualified Buyers</strong><br><span style="font-size:0.95rem;opacity:0.8">Every buyer has proof of funds. No tire-kickers &mdash; real investors ready to transact.</span></div></li>
+        <li><span class="icon">&#x2705;</span><div><strong>Verified Badge = Credibility</strong><br><span style="font-size:0.95rem;opacity:0.8">License verification, background checks, cross-border reviews. Your badge tells foreign buyers you&rsquo;re the real thing.</span></div></li>
+        <li><span class="icon">&#x1F4B2;</span><div><strong>Simple Subscription</strong><br><span style="font-size:0.95rem;opacity:0.8">No per-lead fees, no commissions. Predictable, transparent costs.</span></div></li>
+        <li><span class="icon">&#x1F5E3;&#xFE0F;</span><div><strong>Multilingual Profile</strong><br><span style="font-size:0.95rem;opacity:0.8">Reach buyers in English, Spanish, and Chinese. Your profile displayed in their preferred language.</span></div></li>
       </ul>
     </div>
     <div>
+      <h3 style="color:#a7f3d0;font-size:1.2rem;margin-bottom:16px">For Buyers</h3>
       <ul class="bullets">
-        <li><span class="icon">🗣️</span><div><strong>Multilingual Profile</strong><br><span style="font-size:0.95rem;opacity:0.8">Reach buyers in English, Spanish, and Chinese. Your profile displayed in their preferred language.</span></div></li>
-        <li><span class="icon">⭐</span><div><strong>Cross-Border Reputation</strong><br><span style="font-size:0.95rem;opacity:0.8">Reviews from international transactions become your competitive moat. Trust compounds over time.</span></div></li>
-        <li><span class="icon">📋</span><div><strong>Simple Subscription</strong><br><span style="font-size:0.95rem;opacity:0.8">Monthly subscription. No per-lead fees, no referral commissions. Predictable, transparent costs.</span></div></li>
+        <li><span class="icon">&#x1F512;</span><div><strong>Every Professional is Verified</strong><br><span style="font-size:0.95rem;opacity:0.8">License-checked, background-verified, reviewed by other cross-border buyers.</span></div></li>
+        <li><span class="icon">&#x1F5E3;&#xFE0F;</span><div><strong>Work in Your Language</strong><br><span style="font-size:0.95rem;opacity:0.8">Find professionals who speak your language. Navigate foreign markets with confidence.</span></div></li>
+        <li><span class="icon">&#x1F4CA;</span><div><strong>Transparent Market Data</strong><br><span style="font-size:0.95rem;opacity:0.8">Independent appraisals, market comparisons, and pricing data to make informed decisions.</span></div></li>
+        <li><span class="icon">&#x1F6E1;&#xFE0F;</span><div><strong>Risk Reduction at Every Step</strong><br><span style="font-size:0.95rem;opacity:0.8">Structured offering, verified escrow, clear title checks. DoubleDoor protects your investment.</span></div></li>
       </ul>
     </div>
   </div>
-  <div style="margin-top:24px;padding:16px 24px;background:rgba(255,255,255,0.1);border-radius:12px;text-align:center">
-    <p style="font-size:1rem;margin:0">
-      <strong>Who qualifies:</strong> Licensed agents &bull; Escrow &amp; title officers &bull; Appraisers &bull; Inspectors &bull; Mortgage bankers &bull; RE attorneys &bull; Photographers &bull; Stagers &bull; Consultants
-    </p>
-  </div>
-</div>
-
-<!-- Slide 8: For Buyers -->
-<div class="slide slide-accent" id="slide-8">
-  <div class="tag">For Buyers</div>
-  <h2>Invest in property abroad<br>without the fear.</h2>
-  <div class="grid-2" style="margin-top:16px">
-    <div>
-      <ul class="bullets">
-        <li><span class="icon">🔒</span><div><strong>Every Professional is Verified</strong><br><span style="font-size:0.95rem;opacity:0.8">License-checked, background-verified, reviewed by other cross-border buyers. No more guessing.</span></div></li>
-        <li><span class="icon">🗣️</span><div><strong>Work in Your Language</strong><br><span style="font-size:0.95rem;opacity:0.8">Find professionals who speak your language. Navigate foreign markets with confidence.</span></div></li>
-        <li><span class="icon">📊</span><div><strong>Transparent Market Data</strong><br><span style="font-size:0.95rem;opacity:0.8">Independent appraisals, market comparisons, and pricing data to make informed investment decisions.</span></div></li>
-      </ul>
-    </div>
-    <div>
-      <ul class="bullets">
-        <li><span class="icon">🤝</span><div><strong>KYC-Verified Counterparties</strong><br><span style="font-size:0.95rem;opacity:0.8">Professionals trust you because you're verified. You trust them because they're verified. The marketplace enforces it.</span></div></li>
-        <li><span class="icon">⚖️</span><div><strong>Navigate Foreign Legal Systems</strong><br><span style="font-size:0.95rem;opacity:0.8">Access verified attorneys, escrow companies, and title specialists for cross-border transactions.</span></div></li>
-        <li><span class="icon">🛡️</span><div><strong>Risk Reduction at Every Step</strong><br><span style="font-size:0.95rem;opacity:0.8">Structured offering, verified escrow, clear title checks. DoubleDoor protects your investment.</span></div></li>
-      </ul>
-    </div>
+  <div style="margin-top:20px;padding:12px 24px;background:rgba(255,255,255,0.1);border-radius:12px;text-align:center">
+    <p style="font-size:0.95rem;margin:0"><strong>Who qualifies:</strong> Licensed agents &bull; Escrow &amp; title officers &bull; Appraisers &bull; Inspectors &bull; Mortgage bankers &bull; RE attorneys &bull; Photographers &bull; Stagers &bull; Consultants</p>
   </div>
 </div>
 
-<!-- Slide 9: Two-Sided Trust -->
-<div class="slide slide-dark" id="slide-9">
+<!-- Slide 8: Two-Sided Trust (Amy's rewrite) -->
+<div class="slide slide-dark" id="slide-8">
   <div class="tag">Two-Sided Trust</div>
-  <h2>Trust infrastructure is the product.</h2>
+  <h2>Verified &amp; ready to make an offer.</h2>
   <div class="vs-container" style="margin-top:24px">
     <div class="card" style="text-align:left">
       <h3 style="font-size:1.3rem;text-align:center">Professional Vetting</h3>
       <ul class="bullets" style="margin-top:16px">
-        <li><span class="icon">📋</span> License verification (state/national)</li>
-        <li><span class="icon">🔍</span> Background &amp; disciplinary checks</li>
-        <li><span class="icon">⭐</span> Peer &amp; client review system</li>
-        <li><span class="icon">🏢</span> Brokerage/firm affiliation verified</li>
-        <li><span class="icon">🌐</span> Language capabilities confirmed</li>
-        <li><span class="icon">📈</span> Cross-border transaction history</li>
+        <li><span class="icon">&#x1F4CB;</span> License verification (state/national)</li>
+        <li><span class="icon">&#x1F50D;</span> Background &amp; disciplinary checks</li>
+        <li><span class="icon">&#x2B50;</span> Peer &amp; client review system</li>
+        <li><span class="icon">&#x1F3E2;</span> Brokerage/firm affiliation verified</li>
+        <li><span class="icon">&#x1F310;</span> Language capabilities confirmed</li>
+        <li><span class="icon">&#x1F4C8;</span> Cross-border transaction history</li>
       </ul>
     </div>
     <div style="text-align:center;padding:0 12px">
-      <div style="font-size:3rem;margin-bottom:8px">🔒</div>
+      <div style="font-size:3rem;margin-bottom:8px">&#x1F512;</div>
       <div style="font-size:1.2rem;font-weight:700;color:#10b981">DoubleDoor</div>
       <div style="font-size:0.85rem;opacity:0.6;margin-top:4px">Trust Layer</div>
     </div>
     <div class="card card-emerald" style="text-align:left">
       <h3 style="font-size:1.3rem;text-align:center">Pre-Qualified Buyers</h3>
       <ul class="bullets" style="margin-top:16px">
-        <li><span class="icon">🪪</span> Identity verification</li>
-        <li><span class="icon">✅</span> Pre-qualified buyer status</li>
-        <li><span class="icon">📝</span> Structured offering process</li>
-        <li><span class="icon">🎯</span> Investment intent documentation</li>
-        <li><span class="icon">🛡️</span> Verified &amp; ready to transact</li>
+        <li><span class="icon">&#x1FAAA;</span> Identity verification</li>
+        <li><span class="icon">&#x2705;</span> Pre-qualified with proof of funds</li>
+        <li><span class="icon">&#x1F4DD;</span> Structured offering process</li>
+        <li><span class="icon">&#x1F3AF;</span> Investment intent documentation</li>
+        <li><span class="icon">&#x1F6E1;&#xFE0F;</span> Verified &amp; ready to transact</li>
       </ul>
     </div>
   </div>
-  <p style="margin-top:24px;text-align:center;font-size:1.1rem">
-    <strong style="color:#10b981">Both sides are vetted before they meet.</strong> That's what makes DoubleDoor different from every listing portal.
-  </p>
+  <p style="margin-top:24px;text-align:center;font-size:1.15rem"><strong style="color:#10b981">Both sides are vetted to start the offering process.</strong><br>That&rsquo;s what makes DoubleDoor different from every listing portal.</p>
 </div>
 
-<!-- Slide 10: Language Corridors -->
-<div class="slide slide-white" id="slide-10">
+<!-- Slide 9: Languages (no countries, just languages) -->
+<div class="slide slide-white" id="slide-9">
   <div class="tag tag-dark">Languages</div>
-  <h2 style="color:#065f46">Four languages to cover the majority<br>of global real estate investment.</h2>
-  <div class="grid-4" style="margin-top:40px">
-    <div style="background:#f0fdf4;border-radius:16px;padding:32px;border:1px solid #bbf7d0;text-align:center">
-      <div style="font-size:3rem;margin-bottom:12px">🇺🇸</div>
-      <h3 style="color:#059669;font-size:1.3rem">English</h3>
+  <h2 style="color:#065f46">Built multilingual from day one.</h2>
+  <div class="grid-4" style="margin-top:60px">
+    <div style="background:#f0fdf4;border-radius:16px;padding:40px 32px;border:1px solid #bbf7d0;text-align:center">
+      <div style="font-size:3.5rem;margin-bottom:16px">&#x1F5E3;&#xFE0F;</div>
+      <h3 style="color:#059669;font-size:1.5rem">English</h3>
     </div>
-    <div style="background:#f0fdf4;border-radius:16px;padding:32px;border:1px solid #bbf7d0;text-align:center">
-      <div style="font-size:3rem;margin-bottom:12px">🇪🇸</div>
-      <h3 style="color:#059669;font-size:1.3rem">Spanish</h3>
+    <div style="background:#f0fdf4;border-radius:16px;padding:40px 32px;border:1px solid #bbf7d0;text-align:center">
+      <div style="font-size:3.5rem;margin-bottom:16px">&#x1F5E3;&#xFE0F;</div>
+      <h3 style="color:#059669;font-size:1.5rem">Spanish</h3>
     </div>
-    <div style="background:#f0fdf4;border-radius:16px;padding:32px;border:1px solid #bbf7d0;text-align:center">
-      <div style="font-size:3rem;margin-bottom:12px">🇨🇳</div>
-      <h3 style="color:#059669;font-size:1.3rem">简体中文</h3>
-      <p style="font-size:0.85rem;color:#64748b;margin-top:4px">Simplified Chinese</p>
+    <div style="background:#f0fdf4;border-radius:16px;padding:40px 32px;border:1px solid #bbf7d0;text-align:center">
+      <div style="font-size:3.5rem;margin-bottom:16px">&#x1F5E3;&#xFE0F;</div>
+      <h3 style="color:#059669;font-size:1.5rem">Simplified Chinese</h3>
     </div>
-    <div style="background:#f0fdf4;border-radius:16px;padding:32px;border:1px solid #bbf7d0;text-align:center">
-      <div style="font-size:3rem;margin-bottom:12px">🇹🇼</div>
-      <h3 style="color:#059669;font-size:1.3rem">繁體中文</h3>
-      <p style="font-size:0.85rem;color:#64748b;margin-top:4px">Traditional Chinese</p>
+    <div style="background:#f0fdf4;border-radius:16px;padding:40px 32px;border:1px solid #bbf7d0;text-align:center">
+      <div style="font-size:3.5rem;margin-bottom:16px">&#x1F5E3;&#xFE0F;</div>
+      <h3 style="color:#059669;font-size:1.5rem">Traditional Chinese</h3>
     </div>
   </div>
-  <div style="margin-top:40px;text-align:center">
-    <p style="font-size:1.2rem;color:#065f46;margin:0">
-      These four languages cover the <strong>majority of cross-border real estate transactions</strong> globally.
-    </p>
+  <div style="margin-top:60px;text-align:center">
+    <p style="font-size:1.3rem;color:#065f46;margin:0">Not translated after the fact &mdash; <strong>built for these language corridors from day one.</strong></p>
   </div>
 </div>
 
-<!-- Slide 11: Placeholder for Amy's content -->
-<div class="slide slide-dark" id="slide-11">
-  <div class="tag">Coming Soon</div>
-  <h2 style="text-align:center">📝 This page is being updated</h2>
-  <p style="text-align:center;margin-top:24px;font-size:1.2rem;opacity:0.7">Amy is providing new content for this slide.</p>
+<!-- Slide 10: Competitive Matrix (from Amy's pitch deck page 8) -->
+<div class="slide slide-white" id="slide-10">
+  <div class="tag tag-dark">Competitive Landscape</div>
+  <h2 style="color:#065f46">Non-Competitive Advantages = Partnership</h2>
+  <table class="matrix-table">
+    <thead><tr>
+      <th>Feature</th>
+      <th class="dd-col">DoubleDoor</th>
+      <th>Zillow</th>
+      <th>Global Listings</th>
+      <th>Juwai</th>
+      <th>&#x5C45;&#x5916;</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Cultural Sensitivity</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td></td><td></td><td><span class="check">&#x2714;</span></td><td><span class="check">&#x2714;</span></td></tr>
+      <tr><td>Global Market</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td></td><td><span class="check">&#x2714;</span></td><td><span class="check">&#x2714;</span></td><td><span class="check">&#x2714;</span></td></tr>
+      <tr><td>Virtual Agent</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>AI Powered Trusted Information</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td><span class="check">&#x2714;</span></td><td></td><td></td><td></td></tr>
+      <tr><td>Multilingual</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td></td><td></td><td><span class="check">&#x2714;</span></td><td><span class="check">&#x2714;</span></td></tr>
+      <tr><td>Blockchain Smart Contracts</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>AI API-Based Deep Vetting</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Asian Network / Deep Domain</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td></td><td></td><td></td><td><span class="check">&#x2714;</span></td></tr>
+      <tr><td>Big Data Property Listing</td><td class="dd-col"><span class="check-dd">&#x2714;</span></td><td><span class="check">&#x2714;</span></td><td><span class="check">&#x2714;</span></td><td></td><td><span class="check">&#x2714;</span></td></tr>
+      <tr><td>Online Brokerage</td><td></td><td></td><td><span class="check">&#x2714;</span></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px;text-align:center;font-size:1rem;color:#059669"><strong>DoubleDoor checks 9 of 10 boxes.</strong> No competitor comes close. These aren&rsquo;t competitors &mdash; they&rsquo;re potential partners.</p>
 </div>
 
-<!-- Slide 12: Revenue Model -->
-<div class="slide slide-white" id="slide-12">
+<!-- Slide 11: Revenue Model -->
+<div class="slide slide-white" id="slide-11">
   <div class="tag tag-dark">Revenue Model</div>
-  <h2 style="color:#065f46">Three revenue streams 💰</h2>
+  <h2 style="color:#065f46">Three revenue streams &#x1F4B0;</h2>
   <div class="grid-3" style="margin-top:32px">
     <div class="card card-white" style="border-top:4px solid #10b981;text-align:center">
-      <div style="font-size:3rem;margin-bottom:12px">🏠</div>
+      <div style="font-size:3rem;margin-bottom:12px">&#x1F3E0;</div>
       <h3 style="font-size:1.5rem">Listing Fee</h3>
       <p style="font-size:1rem;color:#64748b;margin-top:8px">Per property listed on marketplace</p>
     </div>
     <div class="card card-white" style="border-top:4px solid #059669;text-align:center">
-      <div style="font-size:3rem;margin-bottom:12px">👤</div>
+      <div style="font-size:3rem;margin-bottom:12px">&#x1F464;</div>
       <h3 style="font-size:1.5rem">Pro Subscription</h3>
       <p style="font-size:1rem;color:#64748b;margin-top:8px">Monthly fee for verified professionals</p>
     </div>
     <div class="card card-white" style="border-top:4px solid #047857;text-align:center">
-      <div style="font-size:3rem;margin-bottom:12px">🤝</div>
+      <div style="font-size:3rem;margin-bottom:12px">&#x1F91D;</div>
       <h3 style="font-size:1.5rem">10% Tech Fee</h3>
       <p style="font-size:1rem;color:#64748b;margin-top:8px">Of closing cost for trust infrastructure</p>
     </div>
   </div>
-  <p style="margin-top:32px;text-align:center;color:#059669;font-size:1.2rem">
-    📈 Revenue grows with transactions. Trust creates the moat.
-  </p>
+  <p style="margin-top:32px;text-align:center;color:#059669;font-size:1.2rem">&#x1F4C8; Revenue grows with transactions. Trust creates the moat.</p>
 </div>
 
-<!-- Slide 13: GTM Phases -->
-<div class="slide slide-dark" id="slide-13">
-  <div class="tag">Go-To-Market Phases</div>
+<!-- Slide 12: Pre-Qualification Pipeline (renamed per Amy) -->
+<div class="slide slide-dark" id="slide-12">
+  <div class="tag">Pre-Qualification Pipeline</div>
   <h2>Four phases to a trusted global marketplace.</h2>
   <div class="timeline" style="margin-top:24px">
     <div class="timeline-phase" style="background:rgba(16,185,129,0.08);border-radius:12px 0 0 12px">
@@ -392,7 +344,7 @@ tr:last-child td{border-bottom:none}
       <div class="phase-title">Foundation</div>
       <ul class="phase-items">
         <li>Build &amp; deploy platform</li>
-        <li>KYC/AML pipeline</li>
+        <li>Pre-qualification pipeline</li>
         <li>Professional verification flow</li>
         <li>Multilingual UI (EN/ES/ZH)</li>
       </ul>
@@ -421,7 +373,7 @@ tr:last-child td{border-bottom:none}
       <div class="phase-label">Phase 3 &bull; Month 6-12</div>
       <div class="phase-title">Expand Corridors</div>
       <ul class="phase-items">
-        <li>Add outbound (US → Mexico/CR)</li>
+        <li>Add outbound (US &#x2192; Mexico/CR)</li>
         <li>Florida + Texas markets</li>
         <li>More language corridors</li>
         <li>Transaction volume flywheel</li>
@@ -430,118 +382,101 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- Slide 14: California First -->
-<div class="slide slide-emerald" id="slide-14">
+<!-- Slide 13: California First -->
+<div class="slide slide-emerald" id="slide-13">
   <div class="tag">Launch Market</div>
   <h2>California First</h2>
   <p style="margin-bottom:24px;opacity:0.85">The #1 destination for foreign real estate investment in the US. Start where the demand is highest.</p>
   <div class="grid-3" style="margin-top:8px">
-    <div class="stat">
-      <div class="stat-number">#1</div>
-      <div class="stat-label">State for Chinese buyers<br>(31% of all Chinese RE purchases)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">$1.2M</div>
-      <div class="stat-label">Median purchase price<br>Chinese buyers in California</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">16%</div>
-      <div class="stat-label">Of all US foreign buyer<br>transactions are in California</div>
-    </div>
+    <div class="stat"><div class="stat-number">#1</div><div class="stat-label">State for Chinese buyers<br>(31% of all Chinese RE purchases)</div></div>
+    <div class="stat"><div class="stat-number">$1.2M</div><div class="stat-label">Median purchase price<br>Chinese buyers in California</div></div>
+    <div class="stat"><div class="stat-number">16%</div><div class="stat-label">Of all US foreign buyer<br>transactions are in California</div></div>
   </div>
   <div class="grid-2" style="margin-top:24px">
     <div class="card" style="background:rgba(255,255,255,0.08)">
       <h3 style="color:#a7f3d0">Why California?</h3>
       <ul class="bullets" style="margin-top:8px">
-        <li style="font-size:0.95rem"><span class="icon">🏙️</span> Highest foreign buyer concentration (LA, SF Bay, San Diego)</li>
-        <li style="font-size:0.95rem"><span class="icon">🇨🇳</span> Largest Chinese &amp; Latin American buyer populations</li>
-        <li style="font-size:0.95rem"><span class="icon">💰</span> Highest property values = highest platform fees</li>
-        <li style="font-size:0.95rem"><span class="icon">🌐</span> Deep pool of multilingual RE professionals</li>
+        <li style="font-size:0.95rem"><span class="icon">&#x1F3D9;&#xFE0F;</span> Highest foreign buyer concentration (LA, SF Bay, San Diego)</li>
+        <li style="font-size:0.95rem"><span class="icon">&#x1F1E8;&#x1F1F3;</span> Largest Chinese &amp; Latin American buyer populations</li>
+        <li style="font-size:0.95rem"><span class="icon">&#x1F4B0;</span> Highest property values = highest platform fees</li>
+        <li style="font-size:0.95rem"><span class="icon">&#x1F310;</span> Deep pool of multilingual RE professionals</li>
       </ul>
     </div>
     <div class="card card-emerald">
       <h3>Expansion Roadmap</h3>
       <ul class="bullets" style="margin-top:8px">
-        <li style="font-size:0.95rem"><span class="icon">2️⃣</span> Florida (Latin American corridor, 2nd highest foreign buyer volume)</li>
-        <li style="font-size:0.95rem"><span class="icon">3️⃣</span> Texas (Mexican buyer concentration, border proximity)</li>
-        <li style="font-size:0.95rem"><span class="icon">4️⃣</span> New York (Chinese, Indian, European investors)</li>
-        <li style="font-size:0.95rem"><span class="icon">🌎</span> Outbound: Mexico Pacific, Costa Rica, Portugal</li>
+        <li style="font-size:0.95rem"><span class="icon">2&#xFE0F;&#x20E3;</span> Florida (Latin American corridor, 2nd highest foreign buyer volume)</li>
+        <li style="font-size:0.95rem"><span class="icon">3&#xFE0F;&#x20E3;</span> Texas (Mexican buyer concentration, border proximity)</li>
+        <li style="font-size:0.95rem"><span class="icon">4&#xFE0F;&#x20E3;</span> New York (Chinese, Indian, European investors)</li>
+        <li style="font-size:0.95rem"><span class="icon">&#x1F30E;</span> Outbound: Mexico Pacific, Costa Rica, Portugal</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- Slide 15: The Vision -->
-<div class="slide slide-emerald" id="slide-15">
+<!-- Slide 14: The Vision (residential property only emphasis) -->
+<div class="slide slide-emerald" id="slide-14">
   <div class="tag">The Vision</div>
-  <div class="quote" style="margin-top:40px;border-left-color:#a7f3d0">
-    "A world where investing in property across borders is as trusted as investing in your own neighborhood."
-  </div>
+  <div class="quote" style="margin-top:40px;border-left-color:#a7f3d0">&ldquo;A world where investing in residential property across borders is as trusted as investing in your own neighborhood.&rdquo;</div>
   <div class="grid-3" style="margin-top:48px">
     <div class="card" style="text-align:center;background:rgba(255,255,255,0.08)">
-      <div style="font-size:2.5rem;margin-bottom:12px">🌏</div>
-      <h3 style="color:#a7f3d0">Global by Design</h3>
-      <p style="font-size:0.95rem">Built for cross-border from day one. Not a domestic platform with international bolted on.</p>
+      <div style="font-size:2.5rem;margin-bottom:12px">&#x1F3E0;</div>
+      <h3 style="color:#a7f3d0">Residential Property Only</h3>
+      <p style="font-size:0.95rem">DoubleDoor is exclusively a residential property marketplace. Focused, specialized, and purpose-built for cross-border home investment.</p>
     </div>
     <div class="card" style="text-align:center;background:rgba(255,255,255,0.08)">
-      <div style="font-size:2.5rem;margin-bottom:12px">🔒</div>
+      <div style="font-size:2.5rem;margin-bottom:12px">&#x1F512;</div>
       <h3 style="color:#a7f3d0">Trust as Product</h3>
-      <p style="font-size:0.95rem">Verification isn't a feature &mdash; it's the entire foundation. Every interaction is between vetted parties.</p>
+      <p style="font-size:0.95rem">Verification isn&rsquo;t a feature &mdash; it&rsquo;s the entire foundation. Every interaction is between vetted parties.</p>
     </div>
     <div class="card" style="text-align:center;background:rgba(255,255,255,0.08)">
-      <div style="font-size:2.5rem;margin-bottom:12px">🤝</div>
+      <div style="font-size:2.5rem;margin-bottom:12px">&#x1F91D;</div>
       <h3 style="color:#a7f3d0">Marketplace Network Effects</h3>
       <p style="font-size:0.95rem">More verified professionals attract more qualified buyers. More transactions build deeper trust data. The flywheel compounds.</p>
     </div>
   </div>
 </div>
 
-<!-- Slide 18: Next Steps / CTA -->
-<div class="slide slide-cta" id="slide-16">
-  <div class="tag" style="background:rgba(255,255,255,0.2)">What's Next</div>
+<!-- Slide 15: Next Steps / CTA -->
+<div class="slide slide-cta" id="slide-15">
+  <div class="tag" style="background:rgba(255,255,255,0.2)">What&rsquo;s Next</div>
   <h1 style="font-size:3rem">Phase 0 Starts Now</h1>
   <div style="margin-top:32px;text-align:left;max-width:600px">
     <ul class="bullets" style="font-size:1.2rem">
-      <li><span class="icon">1️⃣</span> Build verification &amp; KYC pipeline</li>
-      <li><span class="icon">2️⃣</span> Deploy multilingual marketplace platform</li>
-      <li><span class="icon">3️⃣</span> Recruit first 10 verified CA professionals</li>
-      <li><span class="icon">4️⃣</span> Define buyer offering process with Amy</li>
-      <li><span class="icon">5️⃣</span> Launch US ↔ LATAM corridor (California)</li>
+      <li><span class="icon">1&#xFE0F;&#x20E3;</span> Build verification &amp; pre-qualification pipeline</li>
+      <li><span class="icon">2&#xFE0F;&#x20E3;</span> Deploy multilingual marketplace platform</li>
+      <li><span class="icon">3&#xFE0F;&#x20E3;</span> Recruit first 10 verified CA professionals</li>
+      <li><span class="icon">4&#xFE0F;&#x20E3;</span> Define buyer offering process with Amy</li>
+      <li><span class="icon">5&#xFE0F;&#x20E3;</span> Launch US &#x2194;&#xFE0F; LATAM corridor (California)</li>
     </ul>
   </div>
-  <p style="margin-top:40px;font-size:1.3rem;opacity:0.9">
-    Let's build the trust layer. 🌏🏠
-  </p>
+  <p style="margin-top:40px;font-size:1.3rem;opacity:0.9">Let&rsquo;s build the trust layer. &#x1F30F;&#x1F3E0;</p>
   <p class="small" style="margin-top:24px">DoubleDoor &bull; Method &amp; Apparatus &bull; February 2026</p>
 </div>
 
 <!-- Navigation -->
 <div class="nav">
-  <button onclick="prevSlide()">←</button>
-  <button onclick="nextSlide()">→</button>
+  <button onclick="prevSlide()">&#x2190;</button>
+  <button onclick="nextSlide()">&#x2192;</button>
 </div>
-<div class="slide-counter"><span id="current">1</span> / <span id="total">16</span></div>
+<div class="slide-counter"><span id="current">1</span> / <span id="total">15</span></div>
 <div class="deck-footer">DoubleDoor &bull; Method &amp; Apparatus &bull; February 2026</div>
 
 <script>
 let current = 1;
-const total = 16;
-
+const total = 15;
 function showSlide(n) {
   document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
   document.getElementById('slide-' + n).classList.add('active');
   document.getElementById('current').textContent = n;
   current = n;
 }
-
 function nextSlide() { if (current < total) showSlide(current + 1); }
 function prevSlide() { if (current > 1) showSlide(current - 1); }
-
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
 });
-
 let touchStartX = 0;
 document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
 document.addEventListener('touchend', e => {
